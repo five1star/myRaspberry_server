@@ -1,9 +1,10 @@
 import * as express from "express";
 import { movieController } from "../controller";
-
+import { isLoggedIn } from "../utils";
 const router = express.Router();
 
-// GET, /movie/updatetag
-router.patch("/updatetag", movieController.updatetag);
-
+// PATCH, /movie/selectmovie
+router.patch("/selectmovie/", isLoggedIn, movieController.selectmovie);
+// GET, /movie/selectmovie
+router.get("/:title", movieController.callYoutubeApi);
 export default router;
